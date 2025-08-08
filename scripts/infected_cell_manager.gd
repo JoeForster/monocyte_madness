@@ -3,10 +3,12 @@ extends Node
 @export var move_thrust = 1000.0
 @export var decay_rate = 0.0 # EXPERIMENTAL - for a timed mode
 @export var decay_min_size = 10.0
+@export var last_hit_cell_cooldown = 1.0
 
 var input_move : Vector2
 var controlled_cell : Cell
-var player_camera : Camera2D
+var last_hit_cell : Cell
+var last_hit_cell_cooldown_timer = 0.0
 
 func _update_infected_decay(delta: float) -> void:
 	var all_infected = get_tree().get_nodes_in_group("infected")
@@ -14,7 +16,37 @@ func _update_infected_decay(delta: float) -> void:
 		var new_size = infected.size - delta * decay_rate
 		infected.size = max(decay_min_size, new_size)
 	
-func _update_controlled_cell() -> void:
+
+func _update_controlled_cell_last_hit(delta: float) -> void:
+	if last_hit_cell_cooldown_timer > 0.0:
+		last_hit_cell_cooldown_timer -= delta
+		return
+	
+	if controlled_cell == null:
+		_update_controlled_cell_largest()
+		return
+	
+	last_hit_cell_cooldown_timer = 0.0
+
+	# Naive implementation: transfer control over to the first collided infected cell
+	# we could take into account speed but the cooldown may be enough.
+	var all_infected = get_tree().get_nodes_in_group("infected")
+	for node in all_infected:
+		var infected_cell = node as Cell
+		if infected_cell and infected_cell == controlled_cell:
+			var collided_infected_cell : Cell
+			for collided_cell in infected_cell.collided_cells:
+				if collided_cell.is_in_group("infected"):
+					collided_infected_cell = collided_cell
+					break
+	
+			if collided_infected_cell:
+				set_controlled_cell(collided_infected_cell)
+				last_hit_cell_cooldown_timer = last_hit_cell_cooldown
+				break
+
+# ONLY used for initial controlled for now - maybe just remove and set that via level data?
+func _update_controlled_cell_largest() -> void:
 	var all_infected = get_tree().get_nodes_in_group("infected")
 	var largest_cell : Cell
 	var largest_size : float = -1.0
@@ -27,26 +59,34 @@ func _update_controlled_cell() -> void:
 				largest_size = this_size
 				largest_cell = cell # TOOD handle tie (maintain current)
 
+	set_controlled_cell(largest_cell)
+
+func set_controlled_cell(new_controlled_cell : Cell):
+	if new_controlled_cell == controlled_cell:
+		return
+	
+	var player_camera : Camera2D
+	if controlled_cell:
+		player_camera = controlled_cell.get_node("PlayerCamera")
+	else:
+		player_camera = new_controlled_cell.get_node("PlayerCamera")
+	assert(player_camera)
 	# The controlled cell is the largest cell, if any.
 	# Update it and the AI states if it's changed.
-	if largest_cell != controlled_cell:
-		if controlled_cell:
-			controlled_cell.ai_state = Cell.CELL_AI_STATE.FOLLOWING
-		if largest_cell:
-			largest_cell.ai_state = Cell.CELL_AI_STATE.NONE
-
-		controlled_cell = largest_cell
+	if controlled_cell:
+		controlled_cell.ai_state = Cell.CELL_AI_STATE.FOLLOWING
+	if new_controlled_cell:
+		new_controlled_cell.ai_state = Cell.CELL_AI_STATE.NONE
 	
-
+	# Move camera over to the new cell
 	# TODO handle death & smoother camera movement with spring arm of some kind
 	# (probably need to keep camera under this manager's ownership)
-	if player_camera == null:
-		player_camera = largest_cell.get_node("PlayerCamera")
-	elif !largest_cell.has_node("PlayerCamera"):
-		player_camera.get_parent().remove_child(player_camera)
-		player_camera.set_owner(largest_cell)
-		largest_cell.add_child(player_camera)
-
+	player_camera.get_parent().remove_child(player_camera)
+	player_camera.set_owner(new_controlled_cell)
+	new_controlled_cell.add_child(player_camera)
+	
+	# FINALLY update current control cell
+	controlled_cell = new_controlled_cell
 
 @export var infected_leader_attraction_dist = 800.0
 @export var infected_leader_attraction_thrust = 1200.0
@@ -97,9 +137,14 @@ func _update_input() -> void:
 	input_move.y -= Input.get_action_strength("move_up")
 	input_move.y += Input.get_action_strength("move_down")
 
+func _ready() -> void:
+	var initial_infected_cells = get_tree().get_nodes_in_group("infected")
+	assert(!initial_infected_cells.is_empty(), "No viable infected cell to make the player-controlled cell!")
+	set_controlled_cell(initial_infected_cells[0])
+
 func _process(delta: float) -> void:
 	_update_infected_decay(delta)
-	_update_controlled_cell()
+	_update_controlled_cell_last_hit(delta)
 	_update_follow_cells()
 	_update_input()
 
