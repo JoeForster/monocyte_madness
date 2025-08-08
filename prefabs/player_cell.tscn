@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1c6u60r47exq"]
+
+[ext_resource type="Script" uid="uid://bsumyk0gybwuf" path="res://scripts/cell.gd" id="1_7f8c5"]
+[ext_resource type="Script" uid="uid://cwl827i00400m" path="res://scripts/circle_2d.gd" id="2_r5dml"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hd6v"]
+resource_local_to_scene = true
+radius = 100.0
+
+[node name="PlayerCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "collision") groups=["infected"]]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 2
+linear_damp = 2.5
+script = ExtResource("1_7f8c5")
+circle = NodePath("Circle2D")
+collision = NodePath("CollisionShape2D")
+
+[node name="Circle2D" type="Node2D" parent="."]
+script = ExtResource("2_r5dml")
+color = Color(0.579099, 0.675914, 3.85046e-07, 1)
+metadata/_custom_type_script = "uid://cwl827i00400m"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8hd6v")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]

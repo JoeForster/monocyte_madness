@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwlnssv638g5n"]
+
+[ext_resource type="Script" uid="uid://3a1u0fkmdicu" path="res://scripts/wall_tool.gd" id="1_hvgoo"]
+
+[node name="MembraneWall_2" type="StaticBody2D"]
+scale = Vector2(0.56, 0.64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-32.1429, 150, -126.786, 187.5, -189.286, 204.688, -178.571, 257.813, -133.929, 346.875, 175, 253.125, 274, 187, 498.214, 193.75, 637.5, 165.625, 825, 212.5, 1021.43, 246.875, 1083.93, 123.438, 1033.93, 81.25, 944.643, 71.875, 658.929, 34.375, 507.143, 51.5625, 344, 52, 158, 34)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0.717647)
+antialiased = true
+polygon = PackedVector2Array(-32.1429, 150, -126.786, 187.5, -189.286, 204.688, -178.571, 257.813, -133.929, 346.875, 175, 253.125, 274, 187, 498.214, 193.75, 637.5, 165.625, 825, 212.5, 1021.43, 246.875, 1083.93, 123.438, 1033.93, 81.25, 944.643, 71.875, 658.929, 34.375, 507.143, 51.5625, 344, 52, 158, 34)
+script = ExtResource("1_hvgoo")

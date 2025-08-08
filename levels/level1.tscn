@@ -1,0 +1,238 @@
+[gd_scene load_steps=11 format=3 uid="uid://vt6ij6crtylx"]
+
+[ext_resource type="PackedScene" uid="uid://bw5avtwgyvxh0" path="res://prefabs/membrane_wall_1.tscn" id="1_8hd6v"]
+[ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="1_b3oru"]
+[ext_resource type="Texture2D" uid="uid://cm0wt01nb72qm" path="res://textures/bg_mid.png" id="2_ua5ty"]
+[ext_resource type="Texture2D" uid="uid://cjsdv7dfpqdkq" path="res://textures/bg_close.png" id="3_61w3m"]
+[ext_resource type="Script" uid="uid://qmw3ahodd721" path="res://scripts/infected_cell_manager.gd" id="5_61w3m"]
+[ext_resource type="PackedScene" uid="uid://dwlnssv638g5n" path="res://prefabs/membrane_wall_2.tscn" id="5_yydhl"]
+[ext_resource type="PackedScene" uid="uid://b1c6u60r47exq" path="res://prefabs/player_cell.tscn" id="6_lf3p4"]
+[ext_resource type="Script" uid="uid://d2hxxih2jy0av" path="res://scripts/neutral_cell_manager.gd" id="8_045es"]
+[ext_resource type="Script" uid="uid://6x1gqody8kfm" path="res://scripts/cell_hit_manager.gd" id="10_lf3p4"]
+[ext_resource type="PackedScene" uid="uid://c1nu6umtjk2kc" path="res://prefabs/neutral_cell.tscn" id="10_yydhl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("1_b3oru")
+centered = false
+
+[node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/mid"]
+texture = ExtResource("2_ua5ty")
+centered = false
+
+[node name="close" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/close"]
+texture = ExtResource("3_61w3m")
+centered = false
+
+[node name="World" type="Node" parent="."]
+
+[node name="StartTunnel" type="Node2D" parent="World"]
+position = Vector2(-2658, 1021)
+
+[node name="MembraneWall_2" parent="World/StartTunnel" instance=ExtResource("5_yydhl")]
+position = Vector2(2669, -83)
+rotation = -4.57308
+
+[node name="MembraneWall_3" parent="World/StartTunnel" instance=ExtResource("5_yydhl")]
+position = Vector2(1968, 420)
+rotation = 4.80526
+
+[node name="MembraneWall_16" parent="World/StartTunnel" instance=ExtResource("1_8hd6v")]
+position = Vector2(2176, 469)
+rotation = 0.76633
+
+[node name="MembraneWall_17" parent="World/StartTunnel" instance=ExtResource("1_8hd6v")]
+position = Vector2(2259, 609)
+rotation = -0.829065
+
+[node name="StartArea" type="Node2D" parent="World"]
+
+[node name="MembraneWall_1" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-181, 782)
+rotation = -0.153869
+
+[node name="MembraneWall_2" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(112, 737)
+rotation = -0.19584
+
+[node name="MembraneWall_3" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(366, 698)
+rotation = -0.479485
+
+[node name="MembraneWall_4" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(597, 604)
+rotation = -1.14418
+
+[node name="MembraneWall_5" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(713, 356)
+rotation = -1.40708
+
+[node name="MembraneWall_6" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(980, -156)
+rotation = 1.7336
+
+[node name="MembraneWall_7" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(848, -272)
+rotation = -2.27564
+
+[node name="MembraneWall_8" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(726, -462)
+rotation = 3.08793
+
+[node name="MembraneWall_9" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(210, -464)
+rotation = -0.479485
+
+[node name="MembraneWall_10" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-2.99998, -349)
+rotation = -0.479485
+
+[node name="MembraneWall_11" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-581, -47)
+rotation = 2.40485
+
+[node name="MembraneWall_12" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-753, 105)
+rotation = 1.93365
+
+[node name="MembraneWall_13" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-854, 350)
+rotation = 1.59264
+
+[node name="MembraneWall_14" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-874, 566)
+rotation = 0.829041
+
+[node name="MembraneWall_15" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-733, 756)
+rotation = 0.175281
+
+[node name="MembraneWall_17" parent="World/StartArea" instance=ExtResource("5_yydhl")]
+position = Vector2(-34, -91)
+rotation = 2.97939
+
+[node name="Tunnel2" type="Node2D" parent="World"]
+
+[node name="MembraneWall_2" parent="World/Tunnel2" instance=ExtResource("5_yydhl")]
+position = Vector2(974, -557)
+rotation = -0.225376
+
+[node name="MembraneWall_3" parent="World/Tunnel2" instance=ExtResource("5_yydhl")]
+position = Vector2(1475, -188)
+rotation = 2.88447
+
+[node name="CellArea2" type="Node2D" parent="World"]
+position = Vector2(2405, -795)
+rotation = 3.0389
+
+[node name="MembraneWall_1" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-181, 782)
+rotation = -0.153869
+
+[node name="MembraneWall_2" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(112, 737)
+rotation = -0.19584
+
+[node name="MembraneWall_3" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(366, 698)
+rotation = -0.479485
+
+[node name="MembraneWall_4" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(597, 604)
+rotation = -1.14418
+
+[node name="MembraneWall_5" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(713, 356)
+rotation = -1.40708
+
+[node name="MembraneWall_6" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(980, -156)
+rotation = 1.7336
+
+[node name="MembraneWall_7" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(762.586, -522.581)
+rotation = -5.73157
+
+[node name="MembraneWall_8" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(478.431, -564.933)
+rotation = 6.28944
+
+[node name="MembraneWall_9" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(210, -464)
+rotation = -0.479485
+
+[node name="MembraneWall_10" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-2.99998, -349)
+rotation = -0.479485
+
+[node name="MembraneWall_11" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-581, -47)
+rotation = 2.40485
+
+[node name="MembraneWall_12" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-753, 105)
+rotation = 1.93365
+
+[node name="MembraneWall_13" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-854, 350)
+rotation = 1.59264
+
+[node name="MembraneWall_14" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-874, 566)
+rotation = 0.829041
+
+[node name="MembraneWall_15" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-733, 756)
+rotation = 0.175281
+
+[node name="MembraneWall_16" parent="World/CellArea2" instance=ExtResource("1_8hd6v")]
+position = Vector2(-475, 811)
+rotation = -0.0921166
+
+[node name="MembraneWall_17" parent="World/CellArea2" instance=ExtResource("5_yydhl")]
+position = Vector2(-34, -91)
+rotation = 2.97939
+
+[node name="Actors" type="Node" parent="."]
+
+[node name="PlayerCell" parent="Actors" instance=ExtResource("6_lf3p4")]
+position = Vector2(-365, 1477)
+
+[node name="NeutralCell" parent="Actors" instance=ExtResource("10_yydhl")]
+position = Vector2(-240, 198)
+initial_size = 60.0
+
+[node name="NeutralCell2" parent="Actors" instance=ExtResource("10_yydhl")]
+position = Vector2(2156, -811)
+initial_size = 60.0
+
+[node name="NeutralCell4" parent="Actors" instance=ExtResource("10_yydhl")]
+position = Vector2(174, 550)
+initial_size = 60.0
+
+[node name="NeutralCell5" parent="Actors" instance=ExtResource("10_yydhl")]
+position = Vector2(607, -255)
+initial_size = 150.0
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="InfectedCellManager" type="Node" parent="Managers"]
+script = ExtResource("5_61w3m")
+move_thrust = 5000.0
+
+[node name="NeutralCellManager" type="Node" parent="Managers"]
+script = ExtResource("8_045es")
+
+[node name="CellHitManager" type="Node" parent="Managers"]
+script = ExtResource("10_lf3p4")
