@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://6x1gqody8kfm" path="res://scripts/cell_hit_manager.gd" id="10_lf3p4"]
 [ext_resource type="PackedScene" uid="uid://c1nu6umtjk2kc" path="res://prefabs/neutral_cell.tscn" id="10_yydhl"]
 
-[node name="Node2D" type="Node2D"]
+[node name="WorldRoot" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -230,6 +230,7 @@ initial_size = 150.0
 [node name="InfectedCellManager" type="Node" parent="Managers"]
 script = ExtResource("5_61w3m")
 move_thrust = 5000.0
+infected_leader_attraction_thrust = 2500.0
 
 [node name="NeutralCellManager" type="Node" parent="Managers"]
 script = ExtResource("8_045es")
