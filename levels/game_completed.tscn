@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d25wrqqa2si7j"]
+[gd_scene load_steps=5 format=3 uid="uid://dbjnqytr7q5rm"]
 
-[ext_resource type="Script" uid="uid://chhbpncu1x4by" path="res://scripts/ui_scene_transition.gd" id="1_086ed"]
-[ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="2_wclwk"]
-[ext_resource type="Texture2D" uid="uid://cm0wt01nb72qm" path="res://textures/bg_mid.png" id="3_ipm0e"]
-[ext_resource type="Texture2D" uid="uid://cjsdv7dfpqdkq" path="res://textures/bg_close.png" id="4_dwdbi"]
-[ext_resource type="Texture2D" uid="uid://dl1x6akhtx66m" path="res://sprites/Untitled-1.png" id="5_t56a8"]
+[ext_resource type="Script" uid="uid://chhbpncu1x4by" path="res://scripts/ui_scene_transition.gd" id="1_stg7u"]
+[ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="2_iqnkr"]
+[ext_resource type="Texture2D" uid="uid://cm0wt01nb72qm" path="res://textures/bg_mid.png" id="3_b4aeg"]
+[ext_resource type="Texture2D" uid="uid://cjsdv7dfpqdkq" path="res://textures/bg_close.png" id="4_q6lde"]
 
 [node name="Intro" type="Control" node_paths=PackedStringArray("to_show_after_delay")]
 layout_mode = 3
@@ -13,16 +12,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_086ed")
-press_delay_secs = 1.0
-next_scene = "res://levels/level1.tscn"
-to_show_after_delay = NodePath("StartLabel")
+script = ExtResource("1_stg7u")
+next_scene = "res://levels/intro.tscn"
+to_show_after_delay = NodePath("PressLabel")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground"]
 position = Vector2(-9, 43)
-texture = ExtResource("2_wclwk")
+texture = ExtResource("2_iqnkr")
 centered = false
 
 [node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -30,7 +28,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(2048, 2048)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/mid"]
-texture = ExtResource("3_ipm0e")
+texture = ExtResource("3_b4aeg")
 centered = false
 
 [node name="close" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -38,22 +36,10 @@ motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(2048, 2048)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/close"]
-texture = ExtResource("4_dwdbi")
+texture = ExtResource("4_q6lde")
 centered = false
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -512.0
-offset_top = 60.0
-offset_right = 512.0
-offset_bottom = 471.0
-grow_horizontal = 2
-texture = ExtResource("5_t56a8")
-
-[node name="ControlsLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,18 +49,18 @@ anchor_bottom = 0.5
 offset_left = -512.0
 offset_top = -76.0
 offset_right = 514.0
-offset_bottom = 131.0
+offset_bottom = 341.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
 theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
 theme_override_font_sizes/font_size = 48
-text = "Controls:
-Move: Arrow Keys, WSAD, Left Stick or D Pad
-Restart: R or Menu/Select button"
+text = "GAME COMPLETED
+
+Congratulations!"
 horizontal_alignment = 1
 
-[node name="StartLabel" type="Label" parent="."]
+[node name="PressLabel" type="Label" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -83,7 +69,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -512.0
-offset_top = 274.0
+offset_top = 259.0
 offset_right = 514.0
 offset_bottom = 341.0
 grow_horizontal = 2
@@ -91,5 +77,5 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
 theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
 theme_override_font_sizes/font_size = 48
-text = "Press any Button to Start!"
+text = "Press any button to play again!"
 horizontal_alignment = 1

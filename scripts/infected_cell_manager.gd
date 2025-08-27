@@ -11,17 +11,6 @@ var last_hit_cell : Cell
 var last_hit_cell_cooldown_timer = 0.0
 var player_camera : Camera2D
 
-func _update_infected_decay(delta: float) -> void:
-	var all_infected = get_tree().get_nodes_in_group("infected")
-	for infected in all_infected:
-		# Decay over time but note we may have lost size for other reasons
-		# NOTE now used only for deleting dead cells; maybe delete the decay part
-		if infected.size > decay_min_size:
-			var new_size = infected.size - delta * decay_rate
-			infected.size = max(decay_min_size, new_size)
-		if infected.size <= 0:
-			infected.queue_free()
-
 # ONLY used for initial controlled for now - maybe just remove and set that via level data?
 func _update_controlled_cell_largest() -> void:
 	var all_infected = get_tree().get_nodes_in_group("infected")
@@ -150,6 +139,26 @@ func _update_input() -> void:
 	input_move.y -= Input.get_action_strength("move_up")
 	input_move.y += Input.get_action_strength("move_down")
 
+
+func _update_infected_decay(delta: float) -> void:
+	var all_infected = get_tree().get_nodes_in_group("infected")
+	for infected in all_infected:
+		# Decay over time but note we may have lost size for other reasons
+		# NOTE now used only for deleting dead cells; maybe delete the decay part
+		if infected.size > decay_min_size:
+			var new_size = infected.size - delta * decay_rate
+			infected.size = max(decay_min_size, new_size)
+		if infected.size <= 0:
+			infected.queue_free()
+
+func _update_game_over() -> void:
+	if controlled_cell == null:
+		get_tree().change_scene_to_file("res://levels/game_over.tscn")
+	elif (get_tree().get_nodes_in_group("neutrals").is_empty() and 
+		  get_tree().get_nodes_in_group("enemies").is_empty()):
+		# TODO next level once we have multiple levels
+		get_tree().change_scene_to_file("res://levels/game_completed.tscn")
+
 func _ready() -> void:
 	var initial_infected_cells = get_tree().get_nodes_in_group("infected")
 	assert(!initial_infected_cells.is_empty(), "No viable infected cell to make the player-controlled cell!")
@@ -161,6 +170,7 @@ func _process(delta: float) -> void:
 	_update_follow_cells()
 	_update_input()
 	_update_infected_decay(delta)
+	_update_game_over()
 
 func _physics_process(_delta: float) -> void:
 	if controlled_cell and !input_move.is_zero_approx():

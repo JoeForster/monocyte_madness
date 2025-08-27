@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vt6ij6crtylx"]
+[gd_scene load_steps=12 format=3 uid="uid://vt6ij6crtylx"]
 
 [ext_resource type="PackedScene" uid="uid://bw5avtwgyvxh0" path="res://prefabs/membrane_wall_1.tscn" id="1_8hd6v"]
 [ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="1_b3oru"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d2hxxih2jy0av" path="res://scripts/neutral_cell_manager.gd" id="8_045es"]
 [ext_resource type="Script" uid="uid://6x1gqody8kfm" path="res://scripts/cell_hit_manager.gd" id="10_lf3p4"]
 [ext_resource type="PackedScene" uid="uid://c1nu6umtjk2kc" path="res://prefabs/neutral_cell.tscn" id="10_yydhl"]
+[ext_resource type="Script" uid="uid://gmad62y7t2lw" path="res://scripts/game_flow_manager.gd" id="11_yydhl"]
 
 [node name="WorldRoot" type="Node2D"]
 
@@ -237,3 +238,37 @@ script = ExtResource("8_045es")
 
 [node name="CellHitManager" type="Node" parent="Managers"]
 script = ExtResource("10_lf3p4")
+
+[node name="GameFlowManager" type="Node" parent="Managers"]
+script = ExtResource("11_yydhl")
+
+[node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="HUDCanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ControlsLabel" type="Label" parent="HUDCanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -799.0
+offset_top = -116.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Restart: R or Menu/Select button"
+horizontal_alignment = 1
