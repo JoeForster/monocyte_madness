@@ -151,14 +151,6 @@ func _update_infected_decay(delta: float) -> void:
 		if infected.size <= 0:
 			infected.queue_free()
 
-func _update_game_over() -> void:
-	if controlled_cell == null:
-		get_tree().change_scene_to_file("res://levels/game_over.tscn")
-	elif (get_tree().get_nodes_in_group("neutrals").is_empty() and 
-		  get_tree().get_nodes_in_group("enemies").is_empty()):
-		# TODO next level once we have multiple levels
-		get_tree().change_scene_to_file("res://levels/game_completed.tscn")
-
 func _ready() -> void:
 	var initial_infected_cells = get_tree().get_nodes_in_group("infected")
 	assert(!initial_infected_cells.is_empty(), "No viable infected cell to make the player-controlled cell!")
@@ -170,7 +162,6 @@ func _process(delta: float) -> void:
 	_update_follow_cells()
 	_update_input()
 	_update_infected_decay(delta)
-	_update_game_over()
 
 func _physics_process(_delta: float) -> void:
 	if controlled_cell and !input_move.is_zero_approx():
