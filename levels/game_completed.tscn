@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbjnqytr7q5rm"]
+[gd_scene load_steps=6 format=3 uid="uid://dbjnqytr7q5rm"]
 
 [ext_resource type="Script" uid="uid://chhbpncu1x4by" path="res://scripts/ui_scene_transition.gd" id="1_stg7u"]
 [ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="2_iqnkr"]
 [ext_resource type="Texture2D" uid="uid://cm0wt01nb72qm" path="res://textures/bg_mid.png" id="3_b4aeg"]
 [ext_resource type="Texture2D" uid="uid://cjsdv7dfpqdkq" path="res://textures/bg_close.png" id="4_q6lde"]
+[ext_resource type="Script" uid="uid://bhcin5d7ccvlb" path="res://scripts/score_container.gd" id="5_4utud"]
 
 [node name="Intro" type="Control" node_paths=PackedStringArray("to_show_after_delay")]
 layout_mode = 3
@@ -19,7 +20,7 @@ to_show_after_delay = NodePath("PressLabel")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(-9, 43)
+position = Vector2(-10, 24)
 texture = ExtResource("2_iqnkr")
 centered = false
 
@@ -47,21 +48,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -512.0
-offset_top = -76.0
+offset_top = -94.0
 offset_right = 514.0
-offset_bottom = 341.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
 theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
 theme_override_font_sizes/font_size = 48
-text = "GAME COMPLETED
-
-Congratulations!"
+text = "GAME COMPLETED"
 horizontal_alignment = 1
 
 [node name="PressLabel" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,9 +67,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -512.0
-offset_top = 259.0
+offset_top = 305.0
 offset_right = 514.0
-offset_bottom = 341.0
+offset_bottom = 387.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
@@ -79,3 +77,85 @@ theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1
 theme_override_font_sizes/font_size = 48
 text = "Press any button to play again!"
 horizontal_alignment = 1
+
+[node name="ScoreContainer" type="Control" parent="." node_paths=PackedStringArray("score_value", "cell_count_value")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_4utud")
+score_value = NodePath("ScoreLabel/ScoreTotal")
+cell_count_value = NodePath("CellCountLabel/CellCountTotal")
+
+[node name="ScoreLabel" type="Label" parent="ScoreContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = 544.0
+offset_right = 1069.0
+offset_bottom = 622.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Score:"
+horizontal_alignment = 2
+
+[node name="ScoreTotal" type="Label" parent="ScoreContainer/ScoreLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 536.0
+offset_top = -38.0
+offset_right = 740.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="CellCountLabel" type="Label" parent="ScoreContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.636
+anchor_right = 0.484
+anchor_bottom = 0.636
+offset_left = 459.64
+offset_top = 622.56
+offset_right = 1069.64
+offset_bottom = 700.56
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Cells Infected:"
+horizontal_alignment = 2
+
+[node name="CellCountTotal" type="Label" parent="ScoreContainer/CellCountLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 328.0
+offset_top = -39.0
+offset_right = 532.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"

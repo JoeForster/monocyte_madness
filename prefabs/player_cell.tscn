@@ -128,13 +128,14 @@ animations = [{
 resource_local_to_scene = true
 radius = 100.0
 
-[node name="PlayerCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "collision", "absorb_anim") groups=["infected"]]
+[node name="PlayerCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "marker_circle", "collision", "absorb_anim") groups=["infected"]]
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 2
 linear_damp = 2.5
 script = ExtResource("1_7f8c5")
 circle = NodePath("Circle2D")
+marker_circle = NodePath("ControlledMarker")
 collision = NodePath("CollisionShape2D")
 absorb_anim = NodePath("Circle2D/AbsorbAnimSprite")
 
@@ -149,6 +150,13 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_lgr73")
 autoplay = "default"
 frame_progress = 0.964009
+
+[node name="ControlledMarker" type="Node2D" parent="."]
+clip_children = 2
+script = ExtResource("2_r5dml")
+filled = false
+width = 6.0
+metadata/_custom_type_script = "uid://cwl827i00400m"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8hd6v")

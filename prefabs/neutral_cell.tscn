@@ -128,13 +128,14 @@ animations = [{
 resource_local_to_scene = true
 radius = 100.0
 
-[node name="NeutralCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "collision", "absorb_anim") groups=["neutrals"]]
+[node name="NeutralCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "marker_circle", "collision", "absorb_anim") groups=["neutrals"]]
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 2
 linear_damp = 2.5
 script = ExtResource("1_3en2x")
 circle = NodePath("Circle2D")
+marker_circle = NodePath("ControlledMarker")
 collision = NodePath("CollisionShape2D")
 absorb_anim = NodePath("Circle2D/AbsorbAnimSprite")
 
@@ -152,3 +153,11 @@ frame_progress = 0.186685
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3en2x")
+
+[node name="ControlledMarker" type="Node2D" parent="."]
+visible = false
+clip_children = 2
+script = ExtResource("2_8kmu8")
+filled = false
+width = 6.0
+metadata/_custom_type_script = "uid://cwl827i00400m"

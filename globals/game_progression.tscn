@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0uxwnxon3psu"]
+
+[ext_resource type="Script" uid="uid://dmkbxr1i8rmhn" path="res://scripts/game_progression.gd" id="1_i88gs"]
+
+[node name="GameProgression" type="Node"]
+script = ExtResource("1_i88gs")

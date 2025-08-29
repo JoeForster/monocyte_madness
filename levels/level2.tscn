@@ -76,15 +76,15 @@ position = Vector2(597, 604)
 rotation = -1.14418
 
 [node name="MembraneWall_5" parent="World/StartArea" instance=ExtResource("5_qegch")]
-position = Vector2(713, 356)
+position = Vector2(697, 397)
 rotation = -1.40708
 
 [node name="MembraneWall_6" parent="World/StartArea" instance=ExtResource("5_qegch")]
-position = Vector2(980, -156)
-rotation = 1.7336
+position = Vector2(1009, -70)
+rotation = 1.94804
 
 [node name="MembraneWall_7" parent="World/StartArea" instance=ExtResource("5_qegch")]
-position = Vector2(848, -272)
+position = Vector2(840, -286)
 rotation = -2.27564
 
 [node name="MembraneWall_8" parent="World/StartArea" instance=ExtResource("5_qegch")]
@@ -126,11 +126,11 @@ rotation = 2.97939
 [node name="Tunnel2" type="Node2D" parent="World"]
 
 [node name="MembraneWall_2" parent="World/Tunnel2" instance=ExtResource("4_6mfmt")]
-position = Vector2(974, -557)
+position = Vector2(964, -586)
 rotation = -0.225376
 
 [node name="MembraneWall_3" parent="World/Tunnel2" instance=ExtResource("4_6mfmt")]
-position = Vector2(1475, -188)
+position = Vector2(1510, -129)
 rotation = 2.88447
 
 [node name="CellArea2" type="Node2D" parent="World"]
@@ -158,11 +158,11 @@ position = Vector2(713, 356)
 rotation = -1.40708
 
 [node name="MembraneWall_6" parent="World/CellArea2" instance=ExtResource("5_qegch")]
-position = Vector2(980, -156)
+position = Vector2(983.946, -114.738)
 rotation = 1.7336
 
 [node name="MembraneWall_7" parent="World/CellArea2" instance=ExtResource("5_qegch")]
-position = Vector2(762.586, -522.581)
+position = Vector2(741.912, -595.08)
 rotation = -5.73157
 
 [node name="MembraneWall_8" parent="World/CellArea2" instance=ExtResource("5_qegch")]

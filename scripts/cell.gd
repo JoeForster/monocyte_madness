@@ -16,6 +16,7 @@ enum CELL_AI_STATE
 		initial_size = value
 #@export var initial_state : NEUTRAL_AI_STATE = NEUTRAL_AI_STATE.NONE
 @export var circle : Circle2D
+@export var marker_circle : Circle2D
 @export var collision : CollisionShape2D
 @export var absorb_anim : AnimatedSprite2D
 
@@ -51,6 +52,12 @@ func on_update_size():
 	circle.radius = size
 	circle.visible = size > 0
 	circle.queue_redraw()
+	marker_circle.radius = size
+	marker_circle.queue_redraw()
+	
+func set_is_controlled(is_controlled : bool) -> void:
+	if marker_circle:
+		marker_circle.visible = is_controlled
 
 func get_size() -> float:
 	return size

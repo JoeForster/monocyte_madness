@@ -15,6 +15,10 @@ run/main_scene="uid://d25wrqqa2si7j"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameProgression="*res://globals/game_progression.tscn"
+
 [display]
 
 window/size/viewport_width=2048

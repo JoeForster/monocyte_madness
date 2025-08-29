@@ -171,3 +171,7 @@ theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1
 theme_override_font_sizes/font_size = 48
 text = "Restart: R or Menu/Select button"
 horizontal_alignment = 1
+
+[node name="Singletons" type="Node" parent="."]
+
+[node name="GameProgressionManager" type="Node" parent="Singletons"]

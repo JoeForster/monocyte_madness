@@ -13,8 +13,14 @@ class_name Circle2D
 		radius = value
 		queue_redraw()
 
+@export var filled : bool = true
+@export var width : float = -1.0
+
 func _draw():
-	draw_circle(Vector2.ZERO, radius, color)
+	if filled:
+		draw_circle(Vector2.ZERO, radius, color, filled)
+	else:
+		draw_circle(Vector2.ZERO, radius, color, filled, width)
 
 func set_color(new_color : Color):
 	self.color = new_color

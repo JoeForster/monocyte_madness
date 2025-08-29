@@ -76,8 +76,10 @@ func set_controlled_cell(new_controlled_cell : Cell):
 	# The controlled cell is the largest cell, if any.
 	# Update it and the AI states if it's changed.
 	if controlled_cell:
+		controlled_cell.set_is_controlled(false)
 		controlled_cell.ai_state = Cell.CELL_AI_STATE.FOLLOWING
 	if new_controlled_cell:
+		new_controlled_cell.set_is_controlled(true)
 		new_controlled_cell.ai_state = Cell.CELL_AI_STATE.NONE
 	# Move camera over to new cell if applicable
 	# Note the new controlled cell can be null if none left; move to root in this case.
