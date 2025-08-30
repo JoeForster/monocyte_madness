@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://vt6ij6crtylx"]
+[gd_scene load_steps=19 format=3 uid="uid://vt6ij6crtylx"]
 
 [ext_resource type="PackedScene" uid="uid://bw5avtwgyvxh0" path="res://prefabs/membrane_wall_1.tscn" id="1_8hd6v"]
 [ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="1_b3oru"]
@@ -8,9 +8,28 @@
 [ext_resource type="PackedScene" uid="uid://dwlnssv638g5n" path="res://prefabs/membrane_wall_2.tscn" id="5_yydhl"]
 [ext_resource type="PackedScene" uid="uid://b1c6u60r47exq" path="res://prefabs/player_cell.tscn" id="6_lf3p4"]
 [ext_resource type="Script" uid="uid://d2hxxih2jy0av" path="res://scripts/neutral_cell_manager.gd" id="8_045es"]
+[ext_resource type="Script" uid="uid://b2is2oeg0a3r1" path="res://scripts/enemy_cell_manager.gd" id="10_bekh1"]
 [ext_resource type="Script" uid="uid://6x1gqody8kfm" path="res://scripts/cell_hit_manager.gd" id="10_lf3p4"]
 [ext_resource type="PackedScene" uid="uid://c1nu6umtjk2kc" path="res://prefabs/neutral_cell.tscn" id="10_yydhl"]
+[ext_resource type="PackedScene" uid="uid://bwrmwv8mvlqku" path="res://prefabs/enemy_cell.tscn" id="11_8bcou"]
 [ext_resource type="Script" uid="uid://gmad62y7t2lw" path="res://scripts/game_flow_manager.gd" id="11_yydhl"]
+
+[sub_resource type="Curve2D" id="Curve2D_bekh1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1393, -1302, 0, 0, 0, 0, 1312, -1383, 0, 0, 0, 0, 2458, 157, 0, 0, 0, 0, 2520, 1912, 0, 0, 0, 0, 431, 2696, 0, 0, 0, 0, -1942, 2355, 0, 0, 0, 0, -2378, -165, 0, 0, 0, 0, -1393, -1302)
+}
+point_count = 8
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bekh1"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8bcou"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f7u7y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jq2cn"]
+normal = Vector2(1, 0)
 
 [node name="WorldRoot" type="Node2D"]
 
@@ -115,6 +134,29 @@ rotation = 0.175281
 position = Vector2(-47, -72)
 rotation = 2.97939
 
+[node name="EnemySpawnPath" type="Path2D" parent="World"]
+curve = SubResource("Curve2D_bekh1")
+
+[node name="EnemyBoundsArea" type="Area2D" parent="World"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="TopBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(0, -2000)
+shape = SubResource("WorldBoundaryShape2D_bekh1")
+
+[node name="RightBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(3000, 0)
+shape = SubResource("WorldBoundaryShape2D_8bcou")
+
+[node name="BottomBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(0, 3000)
+shape = SubResource("WorldBoundaryShape2D_f7u7y")
+
+[node name="LeftBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(-3000, 0)
+shape = SubResource("WorldBoundaryShape2D_jq2cn")
+
 [node name="Actors" type="Node" parent="."]
 
 [node name="PlayerCell" parent="Actors" instance=ExtResource("6_lf3p4")]
@@ -133,6 +175,13 @@ infected_leader_attraction_thrust = 2500.0
 
 [node name="NeutralCellManager" type="Node" parent="Managers"]
 script = ExtResource("8_045es")
+
+[node name="EnemyCellManager" type="Node" parent="Managers" node_paths=PackedStringArray("actors_parent", "spawn_path", "bounds_area")]
+script = ExtResource("10_bekh1")
+actors_parent = NodePath("../../Actors")
+spawn_path = NodePath("../../World/EnemySpawnPath")
+bounds_area = NodePath("../../World/EnemyBoundsArea")
+spawn_enemy_scene = ExtResource("11_8bcou")
 
 [node name="CellHitManager" type="Node" parent="Managers"]
 script = ExtResource("10_lf3p4")

@@ -3,6 +3,7 @@
 extends RigidBody2D
 class_name Cell
 
+# TODO: only really used properly for neutral cells; needs tidy.
 enum CELL_AI_STATE
 {
 	NONE,
@@ -18,6 +19,7 @@ enum CELL_AI_STATE
 @export var circle : Circle2D
 @export var marker_circle : Circle2D
 @export var collision : CollisionShape2D
+@export var damage_area : Area2D
 @export var absorb_anim : AnimatedSprite2D
 
 # TODO rename to radius? Separate concept of energy from radius?
@@ -65,7 +67,6 @@ func get_size() -> float:
 func _on_body_entered(body: Node):
 	var cell = body as Cell
 	if cell:
-		print("%s HIT %s" % [name, cell.name])
 		collided_cells.push_back(cell)
 
 func _ready() -> void:

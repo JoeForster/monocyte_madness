@@ -1,71 +1,71 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1nu6umtjk2kc"]
+[gd_scene load_steps=22 format=3 uid="uid://bwrmwv8mvlqku"]
 
-[ext_resource type="Script" uid="uid://bsumyk0gybwuf" path="res://scripts/cell.gd" id="1_3en2x"]
-[ext_resource type="Script" uid="uid://cwl827i00400m" path="res://scripts/circle_2d.gd" id="2_8kmu8"]
-[ext_resource type="Texture2D" uid="uid://bcq6td16re1iq" path="res://sprites/wavey_temp.png" id="3_8kmu8"]
+[ext_resource type="Script" uid="uid://bsumyk0gybwuf" path="res://scripts/cell.gd" id="1_1cbxy"]
+[ext_resource type="Script" uid="uid://cwl827i00400m" path="res://scripts/circle_2d.gd" id="2_m18pk"]
+[ext_resource type="Texture2D" uid="uid://bcq6td16re1iq" path="res://sprites/wavey_temp.png" id="3_iss4f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bu3lj"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dv8iw"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl2ue"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1ay4"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4v6r6"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(0, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y5yyu"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(256, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8nm5x"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(512, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtdsf"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(768, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_551id"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(0, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fljv"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(256, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_led3p"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(512, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnx10"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(768, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynxmp"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(0, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sil6"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(256, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hynkn"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(512, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l73fy"]
-atlas = ExtResource("3_8kmu8")
+atlas = ExtResource("3_iss4f")
 region = Rect2(768, 768, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivird"]
@@ -126,27 +126,31 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3en2x"]
 resource_local_to_scene = true
-radius = 100.0
+radius = 50.0
 
-[node name="NeutralCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "marker_circle", "collision", "absorb_anim") groups=["neutrals"]]
+[node name="WhiteBloodCell" type="RigidBody2D" node_paths=PackedStringArray("circle", "marker_circle", "collision", "damage_area", "absorb_anim") groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 2
 linear_damp = 2.5
-script = ExtResource("1_3en2x")
+script = ExtResource("1_1cbxy")
+initial_size = 50.0
 circle = NodePath("Circle2D")
 marker_circle = NodePath("ControlledMarker")
 collision = NodePath("CollisionShape2D")
+damage_area = NodePath("DamageArea")
 absorb_anim = NodePath("Circle2D/AbsorbAnimSprite")
 
 [node name="Circle2D" type="Node2D" parent="."]
 clip_children = 2
-script = ExtResource("2_8kmu8")
-color = Color(0.563168, 0.563041, 0.997298, 1)
+script = ExtResource("2_m18pk")
+color = Color(0.8, 0.8, 0.8, 1)
+radius = 50.0
 metadata/_custom_type_script = "uid://cwl827i00400m"
 
 [node name="AbsorbAnimSprite" type="AnimatedSprite2D" parent="Circle2D"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_ivird")
 autoplay = "default"
 frame_progress = 0.186685
@@ -157,7 +161,13 @@ shape = SubResource("CircleShape2D_3en2x")
 [node name="ControlledMarker" type="Node2D" parent="."]
 visible = false
 clip_children = 2
-script = ExtResource("2_8kmu8")
+script = ExtResource("2_m18pk")
+radius = 50.0
 filled = false
 width = 6.0
 metadata/_custom_type_script = "uid://cwl827i00400m"
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_3en2x")

@@ -29,8 +29,7 @@ func _update_game_over(delta: float) -> void:
 			pending_level_path = "res://levels/game_over.tscn"
 		else:
 			var no_neutrals_left = get_tree().get_nodes_in_group("neutrals").is_empty()
-			var no_enemies_left = get_tree().get_nodes_in_group("enemies").is_empty()
-			if no_neutrals_left and no_enemies_left:
+			if no_neutrals_left:
 				pending_level_path = next_level_path if next_level_path else "res://levels/game_completed.tscn"
 
 

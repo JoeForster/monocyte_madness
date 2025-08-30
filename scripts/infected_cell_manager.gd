@@ -3,6 +3,7 @@ extends Node
 @export var move_thrust = 1000.0
 @export var decay_rate = 0.0 # EXPERIMENTAL - for a timed mode
 @export var decay_min_size = 10.0
+@export var death_size = 5.0
 @export var last_hit_cell_cooldown = 1.0
 
 var input_move : Vector2
@@ -150,7 +151,7 @@ func _update_infected_decay(delta: float) -> void:
 		if infected.size > decay_min_size:
 			var new_size = infected.size - delta * decay_rate
 			infected.size = max(decay_min_size, new_size)
-		if infected.size <= 0:
+		if infected.size <= death_size:
 			infected.queue_free()
 
 func _ready() -> void:
