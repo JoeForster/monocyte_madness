@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://5prwsl1kl61i"]
+[gd_scene load_steps=23 format=3 uid="uid://5prwsl1kl61i"]
 
 [ext_resource type="Texture2D" uid="uid://bssympn12wvvl" path="res://textures/bg_far.png" id="1_7trqu"]
 [ext_resource type="Texture2D" uid="uid://cm0wt01nb72qm" path="res://textures/bg_mid.png" id="2_o0ax4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bwrmwv8mvlqku" path="res://prefabs/enemy_cell.tscn" id="11_i3cyh"]
 [ext_resource type="Script" uid="uid://6x1gqody8kfm" path="res://scripts/cell_hit_manager.gd" id="12_x6jsp"]
 [ext_resource type="Script" uid="uid://gmad62y7t2lw" path="res://scripts/game_flow_manager.gd" id="13_rg68n"]
+[ext_resource type="PackedScene" uid="uid://dvkhhgd42m6ad" path="res://prefabs/neutral_blocker.tscn" id="17_b8ghs"]
 
 [sub_resource type="Curve2D" id="Curve2D_fjysh"]
 _data = {
@@ -407,6 +408,7 @@ script = ExtResource("9_ulrxl")
 
 [node name="EnemyCellManager" type="Node" parent="Managers" node_paths=PackedStringArray("actors_parent", "spawn_path", "bounds_area")]
 script = ExtResource("10_4lmri")
+spawn_time_end = 100.0
 move_thrust_end = 1800.0
 move_damp_end = 2.5
 min_angle_to_player_end = 0.0872665
@@ -452,3 +454,27 @@ theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1
 theme_override_font_sizes/font_size = 48
 text = "Restart: R or Menu/Select button"
 horizontal_alignment = 1
+
+[node name="NeutralBlocker" parent="." instance=ExtResource("17_b8ghs")]
+position = Vector2(922, -205)
+rotation = -0.318391
+
+[node name="NeutralBlocker2" parent="." instance=ExtResource("17_b8ghs")]
+position = Vector2(1504, -420)
+rotation = -0.0180109
+
+[node name="NeutralBlocker3" parent="." instance=ExtResource("17_b8ghs")]
+position = Vector2(3583, -513)
+rotation = 0.421746
+
+[node name="NeutralBlocker4" parent="." instance=ExtResource("17_b8ghs")]
+position = Vector2(3076, -729)
+rotation = 1.3155
+
+[node name="NeutralBlocker5" parent="." instance=ExtResource("17_b8ghs")]
+position = Vector2(4432, -187)
+rotation = 1.4922
+
+[node name="NeutralBlocker6" parent="." instance=ExtResource("17_b8ghs")]
+position = Vector2(3776, -47.0001)
+rotation = 0.493575

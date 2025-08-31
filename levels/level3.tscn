@@ -61,26 +61,27 @@ centered = false
 [node name="World" type="Node" parent="."]
 
 [node name="NeutralBlocker" parent="World" instance=ExtResource("4_tq58f")]
-position = Vector2(-1598, 260)
+position = Vector2(-159, 198)
+rotation = -1.53466
+
+[node name="NeutralBlocker2" parent="World" instance=ExtResource("4_tq58f")]
+position = Vector2(503, 880)
+rotation = -1.86307
 
 [node name="StartTunnel" type="Node2D" parent="World"]
 position = Vector2(-2658, 1021)
 
 [node name="MembraneWall_2" parent="World/StartTunnel" instance=ExtResource("4_7ej46")]
-position = Vector2(2669, -83)
-rotation = -4.57308
+position = Vector2(2615, 49)
+rotation = -4.5424
 
 [node name="MembraneWall_3" parent="World/StartTunnel" instance=ExtResource("4_7ej46")]
 position = Vector2(1968, 420)
 rotation = 4.80526
 
-[node name="MembraneWall_16" parent="World/StartTunnel" instance=ExtResource("5_tq58f")]
-position = Vector2(2176, 469)
-rotation = 0.76633
-
 [node name="MembraneWall_17" parent="World/StartTunnel" instance=ExtResource("5_tq58f")]
-position = Vector2(2259, 609)
-rotation = -0.829065
+position = Vector2(2111, 499)
+rotation = -0.00611198
 
 [node name="StartTunnel2" type="Node2D" parent="World"]
 position = Vector2(529, 1085)
@@ -94,49 +95,45 @@ position = Vector2(-375, 382)
 rotation = 4.80526
 
 [node name="MembraneWall_17" parent="World/StartTunnel2" instance=ExtResource("5_tq58f")]
-position = Vector2(-227, 405)
+position = Vector2(-196, 402)
 rotation = -0.250568
 
 [node name="StartArea" type="Node2D" parent="World"]
 
-[node name="MembraneWall_1" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-245, 794)
-rotation = -0.153869
-
 [node name="MembraneWall_2" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(20, 744)
+position = Vector2(-173, 925)
 rotation = -0.19584
 
 [node name="MembraneWall_3" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(238, 709)
-rotation = -0.772418
+position = Vector2(276, 1018)
+rotation = -3.20953
 
 [node name="MembraneWall_4" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(401, 556)
+position = Vector2(391, 424)
 rotation = -1.58808
 
 [node name="MembraneWall_7" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(408, 308)
+position = Vector2(399, 261)
 rotation = -2.00526
 
 [node name="MembraneWall_9" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(316, 45)
+position = Vector2(291, 45)
 rotation = -2.09387
 
 [node name="MembraneWall_10" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-6, -334)
+position = Vector2(-6.00001, -314)
 rotation = 0.183304
 
 [node name="MembraneWall_11" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-581, -47)
-rotation = 2.40485
+position = Vector2(-672, 27)
+rotation = 1.99502
 
 [node name="MembraneWall_12" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-750, 79)
+position = Vector2(-790, 276)
 rotation = 1.93365
 
 [node name="MembraneWall_13" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-1517, 330)
+position = Vector2(-367, 258)
 rotation = 1.59264
 
 [node name="MembraneWall_14" parent="World/StartArea" instance=ExtResource("5_tq58f")]
@@ -148,39 +145,32 @@ position = Vector2(-717, 683)
 rotation = 0.576361
 
 [node name="MembraneWall_20" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-1471, -90)
-rotation = -0.0738128
+position = Vector2(469, 673)
+rotation = -1.81498
 
 [node name="MembraneWall_21" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-1678, 75.0001)
+position = Vector2(-508, 238)
 rotation = -0.671854
 
-[node name="MembraneWall_18" parent="World/StartArea" instance=ExtResource("5_tq58f")]
-position = Vector2(-1900, -224)
-rotation = 1.66227
+[node name="MembraneWall_22" parent="World/StartArea" instance=ExtResource("5_tq58f")]
+position = Vector2(-48, 106)
+rotation = 0.0259279
+
+[node name="MembraneWall_23" parent="World/StartArea" instance=ExtResource("5_tq58f")]
+position = Vector2(226, 218)
+rotation = 1.60203
 
 [node name="MembraneWall_17" parent="World/StartArea" instance=ExtResource("4_7ej46")]
-position = Vector2(-47, -72)
+position = Vector2(-113, -35)
 rotation = 2.97939
 
 [node name="MembraneWall_5" parent="World/StartArea" instance=ExtResource("4_7ej46")]
-position = Vector2(-1899, -385)
-
-[node name="MembraneWall_19" parent="World/StartArea" instance=ExtResource("4_7ej46")]
-position = Vector2(-1818, 589)
-rotation = -2.07999
+position = Vector2(97.0001, 603)
+rotation = -3.09353
 
 [node name="MembraneWall_16" parent="World/StartArea" instance=ExtResource("4_7ej46")]
-position = Vector2(613, 712)
-rotation = -4.55337
-
-[node name="MembraneWall_8" parent="World/StartArea" instance=ExtResource("4_7ej46")]
-position = Vector2(-1179, -395)
-rotation = 0.451728
-
-[node name="MembraneWall_6" parent="World/StartArea" instance=ExtResource("4_7ej46")]
-position = Vector2(-1020, 702)
-rotation = -3.06912
+position = Vector2(710, 635)
+rotation = -4.94412
 
 [node name="EnemySpawnPath" type="Path2D" parent="World"]
 curve = SubResource("Curve2D_bekh1")
@@ -208,33 +198,32 @@ shape = SubResource("WorldBoundaryShape2D_jq2cn")
 [node name="Actors" type="Node" parent="."]
 
 [node name="PlayerCell" parent="Actors" instance=ExtResource("6_k34hm")]
-position = Vector2(-365, 1477)
+position = Vector2(-412, 1263)
 
 [node name="NeutralCell" parent="Actors" instance=ExtResource("7_c750c")]
-position = Vector2(-5, 49)
+position = Vector2(-170, 350)
 initial_size = 60.0
 
 [node name="NeutralCell2" parent="Actors" instance=ExtResource("7_c750c")]
-position = Vector2(-1333, 424)
-initial_size = 20.0
+position = Vector2(624, 1246)
+initial_size = 40.0
 
 [node name="CellCover" type="Area2D" parent="Actors"]
-position = Vector2(1223, -77)
+position = Vector2(-561, 374)
 collision_layer = 0
 script = ExtResource("8_nq7ub")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Actors/CellCover"]
 scale = Vector2(0.56, 0.64)
-polygon = PackedVector2Array(-53.6392, 51.4918, -89.5723, 217.069, -45.2642, 470.253, 68.6895, 721.966, 305.872, 962.905, 802.015, 1179.19, 1350.03, 1328.35, 1734.02, 1281.98, 2106.19, 719.97, 1849.61, 297.756, 1598.09, 92.736, 1257.34, -151.464, 819.863, -166.105, 360.812, -72.9609, 158.945, -12.29)
+polygon = PackedVector2Array(217.614, 184.662, 583.621, 233.583, 928.274, 226.226, 1253.39, 137.593, 1316.29, -160.762, 1182.51, -278.126, 461.098, -290.016, 230.578, -166.883)
 
 [node name="Polygon2D" type="Polygon2D" parent="Actors/CellCover"]
-position = Vector2(-5, 6)
 rotation = -0.00150954
 scale = Vector2(0.56, 0.64)
 skew = 0.000353813
 color = Color(0.541229, 0.798958, 0.961664, 1)
 antialiased = true
-polygon = PackedVector2Array(-53.6392, 51.4918, -89.5723, 217.069, -138.094, 449.818, -97.2953, 656.122, 214.746, 1003.41, 491.262, 1208.46, 666.282, 1193.07, 1075.27, 1148.3, 1344.97, 1106.46, 2036.2, 988.628, 2406.27, 662.554, 2298.03, 140.535, 2057.72, -436.345, 1534.69, -572.973, 1314.82, -401.389, 866.484, -311.356, 436.131, -315.049, 230.578, -166.883)
+polygon = PackedVector2Array(217.614, 184.662, 583.621, 233.583, 928.274, 226.226, 1253.39, 137.593, 1316.29, -160.762, 1182.51, -278.126, 461.098, -290.016, 230.578, -166.883)
 script = ExtResource("6_o0ax4")
 
 [node name="Managers" type="Node" parent="."]
