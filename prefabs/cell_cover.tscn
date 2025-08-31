@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://chwnno0ih8xgk"]
+
+[ext_resource type="Script" uid="uid://wuiexr7nbmsx" path="res://scripts/cell_cover.gd" id="1_8iaqi"]
+[ext_resource type="Script" uid="uid://3a1u0fkmdicu" path="res://scripts/wall_tool.gd" id="2_ggfhf"]
+
+[node name="CellCover" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_8iaqi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.56, 0.64)
+polygon = PackedVector2Array(-53.6392, 51.4918, -89.5723, 217.069, -45.2642, 470.253, 68.6895, 721.966, 305.872, 962.905, 802.015, 1179.19, 1350.03, 1328.35, 1734.02, 1281.98, 2106.19, 719.97, 1849.61, 297.756, 1598.09, 92.736, 1257.34, -151.464, 819.863, -166.105, 360.812, -72.9609, 158.945, -12.29)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+rotation = -0.00150954
+scale = Vector2(0.56, 0.64)
+skew = 0.000353813
+color = Color(0.541229, 0.798958, 0.961664, 1)
+antialiased = true
+polygon = PackedVector2Array(-53.6392, 51.4918, -89.5723, 217.069, -45.2642, 470.253, 68.6895, 721.966, 305.872, 962.905, 802.015, 1179.19, 1350.03, 1328.35, 1734.02, 1281.98, 2106.19, 719.97, 1849.61, 297.756, 1598.09, 92.736, 1257.34, -151.464, 819.863, -166.105, 360.812, -72.9609, 158.945, -12.29)
+script = ExtResource("2_ggfhf")

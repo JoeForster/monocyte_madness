@@ -53,9 +53,14 @@ func _process_infected_on_neutral_collision(infected_cell : Cell, neutral_cell :
 	#neutral_cell.on_update_size()
 
 	# Convert neutral to infected cell if it was a successful infect
+	# TODO: this kind of duplicates the initial state of the neutral vs infected scenes
+	# - could we replace this with just swapping out with an instantiation of infected, or is there
+	# a better way?
 	if successful_infect:
 		neutral_cell.circle.set_color(infected_cell.circle.color)
 		neutral_cell.ai_state = Cell.CELL_AI_STATE.FOLLOWING
+		neutral_cell.collision_layer = infected_cell.collision_layer
+		neutral_cell.collision_mask = infected_cell.collision_mask
 		neutral_cell.remove_from_group("neutrals")
 		neutral_cell.add_to_group("infected")
 

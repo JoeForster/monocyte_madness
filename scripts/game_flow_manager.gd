@@ -38,5 +38,5 @@ func _update_input() -> void:
 		get_tree().reload_current_scene()
 
 func _process(delta: float) -> void:
-	_update_input()
 	_update_game_over(delta)
+	_update_input()

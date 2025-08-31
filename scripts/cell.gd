@@ -48,6 +48,8 @@ func set_absorbing(target_size : float, time_period : float, impulse_after : Vec
 func on_update_size():
 	if Engine.is_editor_hint():
 		size = initial_size
+	if size < 0:
+		size = 0	
 	var circle_shape = collision.shape as CircleShape2D
 	if circle_shape:
 		circle_shape.radius = size
