@@ -62,9 +62,9 @@ centered = false
 position = Vector2(-1003, 1261)
 
 [node name="NeutralBlocker2" parent="World" instance=ExtResource("4_f7u7y")]
-position = Vector2(32, 68)
-rotation = -0.99946
-scale = Vector2(3.27686, 30.9628)
+position = Vector2(132, 100)
+rotation = -0.279006
+scale = Vector2(3.27686, 21.4913)
 
 [node name="StartTunnel" type="Node2D" parent="World"]
 position = Vector2(-535, 1444)
@@ -98,31 +98,31 @@ rotation = -0.19584
 
 [node name="MembraneWall_8" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
 position = Vector2(-309, 761)
-rotation = -0.19584
+rotation = 0.572116
 
 [node name="MembraneWall_19" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(-40, 712)
+position = Vector2(-144, 888)
 rotation = -0.19584
 
 [node name="MembraneWall_3" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(217, 785)
+position = Vector2(95, 948)
 rotation = -1.63714
 
 [node name="MembraneWall_4" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(208, 505)
+position = Vector2(79, 697)
 rotation = -1.58808
 
 [node name="MembraneWall_7" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(215, 230)
+position = Vector2(77, 450)
 rotation = -1.33769
 
 [node name="MembraneWall_9" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(316, 45)
-rotation = -2.09387
+position = Vector2(477, 290)
+rotation = -3.41121
 
 [node name="MembraneWall_10" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(-6, -334)
-rotation = 0.183304
+position = Vector2(546, -45)
+rotation = 1.48992
 
 [node name="MembraneWall_11" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
 position = Vector2(-819, 407)
@@ -133,8 +133,12 @@ position = Vector2(-708, 164)
 rotation = 1.95771
 
 [node name="MembraneWall_18" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
-position = Vector2(-831, 99)
-rotation = 5.19414
+position = Vector2(-796, 71)
+rotation = 5.84977
+
+[node name="MembraneWall_20" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
+position = Vector2(-241, 17)
+rotation = 2.79771
 
 [node name="MembraneWall_12" parent="World/StartArea" instance=ExtResource("1_8hd6v")]
 position = Vector2(-903, 603)
@@ -153,8 +157,8 @@ position = Vector2(-894, 1379)
 rotation = 0.576361
 
 [node name="MembraneWall_17" parent="World/StartArea" instance=ExtResource("5_yydhl")]
-position = Vector2(-40, -86)
-rotation = 2.97939
+position = Vector2(-131, -221)
+rotation = 0.133147
 
 [node name="MembraneWall_5" parent="World/StartArea" instance=ExtResource("5_yydhl")]
 position = Vector2(-1539, 1031)
@@ -192,7 +196,7 @@ shape = SubResource("WorldBoundaryShape2D_jq2cn")
 position = Vector2(-365, 1477)
 
 [node name="NeutralCell" parent="Actors" instance=ExtResource("10_yydhl")]
-position = Vector2(146, -62)
+position = Vector2(294, 76)
 initial_size = 15.0
 
 [node name="NeutralCell2" parent="Actors" instance=ExtResource("10_yydhl")]
@@ -221,40 +225,70 @@ spawn_enemy_scene = ExtResource("11_8bcou")
 [node name="CellHitManager" type="Node" parent="Managers"]
 script = ExtResource("10_lf3p4")
 
-[node name="GameFlowManager" type="Node" parent="Managers"]
+[node name="GameFlowManager" type="Node" parent="Managers" node_paths=PackedStringArray("timer_label")]
 script = ExtResource("11_yydhl")
 next_level_path = "res://levels/level2.tscn"
+timer_label = NodePath("../../HUDCanvasLayer/HUD/LevelTimerLabel/LevelTimerValue")
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="HUDCanvasLayer"]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ControlsLabel" type="Label" parent="HUDCanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 759.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Restart: R or Menu/Select button"
+horizontal_alignment = 2
+
+[node name="LevelTimerLabel" type="Label" parent="HUDCanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -799.0
-offset_top = -116.0
-offset_right = -40.0
-offset_bottom = -40.0
+offset_left = -509.0
+offset_top = -76.0
+offset_right = -217.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
 theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
 theme_override_font_sizes/font_size = 48
-text = "Restart: R or Menu/Select button"
-horizontal_alignment = 1
+text = "Time Taken: "
+horizontal_alignment = 2
+
+[node name="LevelTimerValue" type="Label" parent="HUDCanvasLayer/HUD/LevelTimerLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -76.0
+offset_right = 199.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "00:00:00"
+horizontal_alignment = 2
 
 [node name="Singletons" type="Node" parent="."]
 

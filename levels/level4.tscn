@@ -343,6 +343,32 @@ shape = SubResource("WorldBoundaryShape2D_6mfmt")
 position = Vector2(-3000, 0)
 shape = SubResource("WorldBoundaryShape2D_qegch")
 
+[node name="NeutralBlocker" parent="World" instance=ExtResource("17_b8ghs")]
+position = Vector2(922, -205)
+rotation = -0.318391
+
+[node name="NeutralBlocker2" parent="World" instance=ExtResource("17_b8ghs")]
+position = Vector2(1504, -420)
+rotation = -0.0180109
+
+[node name="NeutralBlocker3" parent="World" instance=ExtResource("17_b8ghs")]
+position = Vector2(3583, -513)
+rotation = 0.421746
+
+[node name="NeutralBlocker4" parent="World" instance=ExtResource("17_b8ghs")]
+position = Vector2(3076, -729)
+rotation = 1.3155
+scale = Vector2(3.27686, 15.7255)
+
+[node name="NeutralBlocker5" parent="World" instance=ExtResource("17_b8ghs")]
+position = Vector2(4432, -187)
+rotation = 1.4922
+
+[node name="NeutralBlocker6" parent="World" instance=ExtResource("17_b8ghs")]
+position = Vector2(3776, -47.0001)
+rotation = 0.493575
+scale = Vector2(3.27686, 15.7255)
+
 [node name="Actors" type="Node" parent="."]
 
 [node name="PlayerCell" parent="Actors" instance=ExtResource("6_k34hm")]
@@ -421,60 +447,66 @@ spawn_enemy_scene = ExtResource("11_i3cyh")
 [node name="CellHitManager" type="Node" parent="Managers"]
 script = ExtResource("12_x6jsp")
 
-[node name="GameFlowManager" type="Node" parent="Managers"]
+[node name="GameFlowManager" type="Node" parent="Managers" node_paths=PackedStringArray("timer_label")]
 script = ExtResource("13_rg68n")
+timer_label = NodePath("../../HUDCanvasLayer/HUD/LevelTimerLabel/LevelTimerValue")
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="HUDCanvasLayer"]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ControlsLabel" type="Label" parent="HUDCanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 759.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Restart: R or Menu/Select button"
+horizontal_alignment = 2
+
+[node name="LevelTimerLabel" type="Label" parent="HUDCanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -799.0
-offset_top = -116.0
-offset_right = -40.0
-offset_bottom = -40.0
+offset_left = -509.0
+offset_top = -76.0
+offset_right = -217.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
 theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
 theme_override_font_sizes/font_size = 48
-text = "Restart: R or Menu/Select button"
-horizontal_alignment = 1
+text = "Time Taken: "
+horizontal_alignment = 2
 
-[node name="NeutralBlocker" parent="." instance=ExtResource("17_b8ghs")]
-position = Vector2(922, -205)
-rotation = -0.318391
-
-[node name="NeutralBlocker2" parent="." instance=ExtResource("17_b8ghs")]
-position = Vector2(1504, -420)
-rotation = -0.0180109
-
-[node name="NeutralBlocker3" parent="." instance=ExtResource("17_b8ghs")]
-position = Vector2(3583, -513)
-rotation = 0.421746
-
-[node name="NeutralBlocker4" parent="." instance=ExtResource("17_b8ghs")]
-position = Vector2(3076, -729)
-rotation = 1.3155
-
-[node name="NeutralBlocker5" parent="." instance=ExtResource("17_b8ghs")]
-position = Vector2(4432, -187)
-rotation = 1.4922
-
-[node name="NeutralBlocker6" parent="." instance=ExtResource("17_b8ghs")]
-position = Vector2(3776, -47.0001)
-rotation = 0.493575
+[node name="LevelTimerValue" type="Label" parent="HUDCanvasLayer/HUD/LevelTimerLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -76.0
+offset_right = 199.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "00:00:00"
+horizontal_alignment = 2

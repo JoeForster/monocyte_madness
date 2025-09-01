@@ -6,14 +6,16 @@ class LevelResults:
 	var num_infected_cells = 0
 	var total_infected_size = 0.0
 	var biggest_size = 0.0
+	var time_taken = 0.0
 
 var results : Array[LevelResults]
 
-func add_level_results(num_infected_cells, total_infected_size, biggest_size):
+func add_level_results(num_infected_cells, total_infected_size, biggest_size, time_taken):
 	var new_results = LevelResults.new()
 	new_results.num_infected_cells = num_infected_cells
 	new_results.total_infected_size = total_infected_size
 	new_results.biggest_size = biggest_size
+	new_results.time_taken = time_taken
 	results.append(new_results)
 
 func get_total_score() -> int:

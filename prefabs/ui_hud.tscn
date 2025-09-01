@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b24sd0d5u5418"]
+
+[node name="HUDCanvasLayer" type="CanvasLayer"]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 759.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Restart: R or Menu/Select button"
+horizontal_alignment = 2
+
+[node name="LevelTimerLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -509.0
+offset_top = -76.0
+offset_right = -217.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Time Taken: "
+horizontal_alignment = 2
+
+[node name="LevelTimerValue" type="Label" parent="HUD/LevelTimerLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -76.0
+offset_right = 199.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "00:00:00"
+horizontal_alignment = 2
