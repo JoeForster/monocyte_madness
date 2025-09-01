@@ -164,10 +164,10 @@ func _ready() -> void:
 	set_controlled_cell(initial_infected_cells[0])
 
 func _process(delta: float) -> void:
-	_update_infected_decay(delta)
 	_update_controlled_cell_last_hit(delta)
 	_update_follow_cells()
 	_update_input()
+	_update_infected_decay(delta)
 
 func _physics_process(_delta: float) -> void:
 	if controlled_cell and !input_move.is_zero_approx():

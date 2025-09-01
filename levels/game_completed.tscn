@@ -78,13 +78,15 @@ theme_override_font_sizes/font_size = 48
 text = "Press any button to play again!"
 horizontal_alignment = 1
 
-[node name="ScoreContainer" type="Control" parent="." node_paths=PackedStringArray("score_value", "cell_count_value")]
+[node name="ScoreContainer" type="Control" parent="." node_paths=PackedStringArray("score_value", "cell_count_value", "time_taken_value")]
 anchors_preset = 0
+offset_top = -39.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 1.0
 script = ExtResource("5_4utud")
 score_value = NodePath("ScoreLabel/ScoreTotal")
 cell_count_value = NodePath("CellCountLabel/CellCountTotal")
+time_taken_value = NodePath("TimeTakenLabel/TimeTotal")
 
 [node name="ScoreLabel" type="Label" parent="ScoreContainer"]
 layout_mode = 1
@@ -143,6 +145,43 @@ text = "Cells Infected:"
 horizontal_alignment = 2
 
 [node name="CellCountTotal" type="Label" parent="ScoreContainer/CellCountLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 328.0
+offset_top = -39.0
+offset_right = 532.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="TimeTakenLabel" type="Label" parent="ScoreContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.636
+anchor_right = 0.484
+anchor_bottom = 0.636
+offset_left = 459.64
+offset_top = 706.56
+offset_right = 1069.64
+offset_bottom = 784.56
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.843137, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.0313726, 0.294118, 0.670588, 1)
+theme_override_font_sizes/font_size = 48
+text = "Time Taken:"
+horizontal_alignment = 2
+
+[node name="TimeTotal" type="Label" parent="ScoreContainer/TimeTakenLabel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

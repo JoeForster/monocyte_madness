@@ -447,8 +447,9 @@ spawn_enemy_scene = ExtResource("14_o3dio")
 [node name="CellHitManager" type="Node" parent="Managers"]
 script = ExtResource("15_6s8mo")
 
-[node name="GameFlowManager" type="Node" parent="Managers"]
+[node name="GameFlowManager" type="Node" parent="Managers" node_paths=PackedStringArray("timer_label")]
 script = ExtResource("16_1qwqs")
+timer_label = NodePath("../../HUDCanvasLayer/HUD/LevelTimerLabel/LevelTimerValue")
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 

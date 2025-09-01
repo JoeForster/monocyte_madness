@@ -30,3 +30,9 @@ func get_total_count() -> int:
 	for result in results:
 		total_count += result.num_infected_cells
 	return total_count
+
+func get_total_time_taken() -> float:
+	var total_time = 0.0
+	for result in results:
+		total_time += result.time_taken
+	return total_time
