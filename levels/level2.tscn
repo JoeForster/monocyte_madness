@@ -17,12 +17,6 @@
 [ext_resource type="Script" uid="uid://gmad62y7t2lw" path="res://scripts/game_flow_manager.gd" id="11_hfi3b"]
 [ext_resource type="Script" uid="uid://b2is2oeg0a3r1" path="res://scripts/enemy_cell_manager.gd" id="12_fjysh"]
 
-[sub_resource type="Curve2D" id="Curve2D_bekh1"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1393, -1302, 0, 0, 0, 0, 1312, -1383, 0, 0, 0, 0, 2458, 157, 0, 0, 0, 0, 2520, 1912, 0, 0, 0, 0, 431, 2696, 0, 0, 0, 0, -1942, 2355, 0, 0, 0, 0, -2378, -165, 0, 0, 0, 0, -1393, -1302)
-}
-point_count = 8
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bekh1"]
 normal = Vector2(0, 1)
 
@@ -33,6 +27,12 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jq2cn"]
 normal = Vector2(1, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_bekh1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1393, -1302, 0, 0, 0, 0, 1312, -1383, 0, 0, 0, 0, 2458, 157, 0, 0, 0, 0, 2520, 1912, 0, 0, 0, 0, 431, 2696, 0, 0, 0, 0, -1942, 2355, 0, 0, 0, 0, -2378, -165, 0, 0, 0, 0, -1393, -1302)
+}
+point_count = 8
 
 [node name="WorldRoot" type="Node2D"]
 
@@ -167,10 +167,8 @@ rotation = 0.451728
 position = Vector2(-1020, 702)
 rotation = -3.06912
 
-[node name="EnemySpawnPath" type="Path2D" parent="World"]
-curve = SubResource("Curve2D_bekh1")
-
 [node name="EnemyBoundsArea" type="Area2D" parent="World"]
+position = Vector2(-710, 15)
 collision_layer = 3
 collision_mask = 3
 
@@ -189,6 +187,9 @@ shape = SubResource("WorldBoundaryShape2D_f7u7y")
 [node name="LeftBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
 position = Vector2(-3000, 0)
 shape = SubResource("WorldBoundaryShape2D_jq2cn")
+
+[node name="EnemySpawnPath" type="Path2D" parent="World/EnemyBoundsArea"]
+curve = SubResource("Curve2D_bekh1")
 
 [node name="Actors" type="Node" parent="."]
 
@@ -238,7 +239,7 @@ spawn_count_end = 1
 move_thrust_end = 1000.0
 move_damp_end = 3.0
 actors_parent = NodePath("../../Actors")
-spawn_path = NodePath("../../World/EnemySpawnPath")
+spawn_path = NodePath("../../World/EnemyBoundsArea/EnemySpawnPath")
 bounds_area = NodePath("../../World/EnemyBoundsArea")
 spawn_enemy_scene = ExtResource("11_bcewn")
 

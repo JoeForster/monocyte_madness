@@ -13,28 +13,29 @@ var last_hit_cell_cooldown_timer = 0.0
 var player_camera : Camera2D
 
 # ONLY used for initial controlled for now - maybe just remove and set that via level data?
-func _update_controlled_cell_largest() -> void:
+func _update_controlled_cell_initial() -> void:
 	var all_infected = get_tree().get_nodes_in_group("infected")
-	var largest_cell : Cell
+	var camera_cell : Cell
 	var largest_size : float = 0.0
-	
+	var largest_cell : Cell
 	for infected in all_infected:
 		var cell = infected as Cell
-		if cell:
-			var this_size = cell.get_size()
-			if this_size > largest_size:
-				largest_size = this_size
-				largest_cell = cell # TOOD handle tie (maintain current)
+		if cell and cell.size > 0:
+			if cell.size > largest_size:
+				largest_size = cell.size
+				largest_cell = cell
+			if cell.has_node("PlayerCamera"):
+				camera_cell = cell
 
-	set_controlled_cell(largest_cell)
+	set_controlled_cell(camera_cell if camera_cell else largest_cell)
 
 func _update_controlled_cell_last_hit(delta: float) -> void:
 	if last_hit_cell_cooldown_timer > 0.0:
 		last_hit_cell_cooldown_timer -= delta
 		return
 
-	if controlled_cell == null:
-		_update_controlled_cell_largest()
+	if controlled_cell == null || controlled_cell.size <= 0:
+		_update_controlled_cell_initial()
 		return
 
 	if last_hit_cell_cooldown_timer > 0.0:
@@ -63,8 +64,10 @@ func _update_controlled_cell_last_hit(delta: float) -> void:
 				break
 	
 	# No valid controlled cell for this rule, possibly because it was destroyed.
+	# We MUST select a new one if we can
+	# TODO tidy up how we manage this, particularly with the camera owner change
 	if !found_controlled_cell:
-		_update_controlled_cell_largest()
+		_update_controlled_cell_initial()
 
 func _init_player_camera(controlled_cell : Cell):
 	assert(controlled_cell)
@@ -161,10 +164,10 @@ func _ready() -> void:
 	set_controlled_cell(initial_infected_cells[0])
 
 func _process(delta: float) -> void:
+	_update_infected_decay(delta)
 	_update_controlled_cell_last_hit(delta)
 	_update_follow_cells()
 	_update_input()
-	_update_infected_decay(delta)
 
 func _physics_process(_delta: float) -> void:
 	if controlled_cell and !input_move.is_zero_approx():

@@ -12,6 +12,7 @@ extends Node
 @export var move_thrust_end = 2000.0 
 @export var move_damp_start = 3.0
 @export var move_damp_end = 2.0
+@export var go_for_controlled_only = false
 @export_range(0, 90, 0.1, "radians_as_degrees") var min_angle_to_player_start: float = deg_to_rad(20)
 @export_range(0, 90, 0.1, "radians_as_degrees") var max_angle_to_player_start: float = deg_to_rad(45)
 @export_range(0, 90, 0.1, "radians_as_degrees") var min_angle_to_player_end: float = deg_to_rad(0)
@@ -24,7 +25,6 @@ extends Node
 @export var spawn_enemy_scene : PackedScene
 
 @export var enemy_overlap_damage : float = 20.0
-@export var kill_size = 10.0
 
 var difficulty_timer = 0.0
 var current_spawn_count = 0
@@ -81,9 +81,15 @@ func _process_spawning() -> void:
 		# Just fly at the player and we'll despawn when we leave bounds on the other side.
 		var all_infected = get_tree().get_nodes_in_group("infected")
 		if !all_infected.is_empty():
-			var random_infected : Cell = all_infected.pick_random()
-			assert(random_infected)
-			var initial_direction = (random_infected.get_position() - spawned_enemy.get_position()).normalized()
+			var target_infected : Cell
+			if go_for_controlled_only:
+				for i in all_infected:
+					if i.has_node("PlayerCamera"): # HACK
+						target_infected = i
+			else:
+				target_infected = all_infected.pick_random()
+			assert(target_infected)
+			var initial_direction = (target_infected.get_position() - spawned_enemy.get_position()).normalized()
 			var random_turn = lerp_angle(current_min_angle_to_player, current_max_angle_to_player, randf())
 			if randi() % 2 == 0:
 				random_turn *= -1.0
@@ -106,8 +112,6 @@ func _process_damage(delta: float) -> void:
 				enemy.damage_area.process_mode = Node.PROCESS_MODE_DISABLED
 				
 				overlap_cell.on_update_size()
-				if overlap_cell.size <= kill_size:
-					overlap_cell.queue_free()
 				
 func _process(delta: float) -> void:
 	# Check all infected cells and determine largest
