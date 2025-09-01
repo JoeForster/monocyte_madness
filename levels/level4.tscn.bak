@@ -320,6 +320,29 @@ rotation = -0.67488
 position = Vector2(310.805, 502.001)
 rotation = -3.08722
 
+[node name="EnemySpawnPath" type="Path2D" parent="World"]
+curve = SubResource("Curve2D_fjysh")
+
+[node name="EnemyBoundsArea" type="Area2D" parent="World"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="TopBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(0, -3209)
+shape = SubResource("WorldBoundaryShape2D_fjysh")
+
+[node name="RightBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(6143, -18)
+shape = SubResource("WorldBoundaryShape2D_bcewn")
+
+[node name="BottomBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(0, 3000)
+shape = SubResource("WorldBoundaryShape2D_6mfmt")
+
+[node name="LeftBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
+position = Vector2(-3000, 0)
+shape = SubResource("WorldBoundaryShape2D_qegch")
+
 [node name="NeutralBlocker" parent="World" instance=ExtResource("17_b8ghs")]
 position = Vector2(922, -205)
 rotation = -0.318391
@@ -345,29 +368,6 @@ rotation = 1.4922
 position = Vector2(3776, -47.0001)
 rotation = 0.493575
 scale = Vector2(3.27686, 15.7255)
-
-[node name="EnemySpawnPath" type="Path2D" parent="World"]
-curve = SubResource("Curve2D_fjysh")
-
-[node name="EnemyBoundsArea" type="Area2D" parent="World"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="TopBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
-position = Vector2(0, -3209)
-shape = SubResource("WorldBoundaryShape2D_fjysh")
-
-[node name="RightBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
-position = Vector2(6143, -18)
-shape = SubResource("WorldBoundaryShape2D_bcewn")
-
-[node name="BottomBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
-position = Vector2(0, 3000)
-shape = SubResource("WorldBoundaryShape2D_6mfmt")
-
-[node name="LeftBounds" type="CollisionShape2D" parent="World/EnemyBoundsArea"]
-position = Vector2(-3000, 0)
-shape = SubResource("WorldBoundaryShape2D_qegch")
 
 [node name="Actors" type="Node" parent="."]
 
@@ -447,9 +447,13 @@ spawn_enemy_scene = ExtResource("11_i3cyh")
 [node name="CellHitManager" type="Node" parent="Managers"]
 script = ExtResource("12_x6jsp")
 
-[node name="GameFlowManager" type="Node" parent="Managers"]
+[node name="GameFlowManager" type="Node" parent="Managers" node_paths=PackedStringArray("timer_label")]
 script = ExtResource("13_rg68n")
+<<<<<<< HEAD
 next_level_path = "level5.tscn"
+=======
+timer_label = NodePath("../../HUDCanvasLayer/HUD/LevelTimerLabel/LevelTimerValue")
+>>>>>>> 44cede1ad82fac6c19884e52f2b4459d45d250cf
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 
